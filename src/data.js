@@ -44,42 +44,42 @@ export const runningShoes = [
   {
     id: 1,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/58d3ebdf9dd94e7c80c9ad0b01060339_9366/Giay_Chay_Bo_UltraBoost_21_Tokyo_trang_S23863_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 2,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/f94cf89e61d7466ba402acb8010dd70a_9366/Giay_UltraBoost_21_trang_S23708_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 3,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/8453a9e0695644ae9002ad2100ad29c9_9366/Giay_UltraBoost_21_DJen_S23870_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 4,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/707bd9b6c1a44ce7bb58ac77012fcb2e_9366/Giay_UltraBoost_21_Xam_FY0375_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 5,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/b021aabd9254426f99e3ad2000309d0e_9366/Giay_adidas_Ultraboost_DNA_x_LEGO(r)_Colors_DJen_H67953_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 6,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/60712c4ffd24452fbe87acee00dbf61a_9366/Giay_adidas_Ultraboost_DNA_x_LEGO(r)_Colors_trang_H67955_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 7,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/cdde9668441f43248983ab450106beef_9366/Giay_Ultraboost_SUMMER.RDY_Tokyo_trang_FX0031_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
   {
     id: 8,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/237685b5868c409b8390ab51013b8507_9366/Giay_Ultraboost_20_x_James_Bond_Xam_FY0647_01_standard.jpg",
-    title: "FOOTBALL",
+    title: "RUNNING",
   },
 ];
 
