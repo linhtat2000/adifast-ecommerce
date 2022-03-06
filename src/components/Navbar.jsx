@@ -80,7 +80,7 @@ const Navbar = () => {
           </SearchContainer>
         </Left>
         <Center>
-          <Logo>ADISFAST</Logo>
+          <Logo>ADIFAST</Logo>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
