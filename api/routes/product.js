@@ -21,7 +21,7 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
   try {
-    const updatedProduct = await User.findByIdAndUpdate(
+    const updatedProduct = await Product.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -75,32 +75,6 @@ router.get("/", async (req, res) => {
     }
 
     res.status(200).json(products);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-//GET USER STATS
-router.get("/stats", verifyTokenAndAdmin, async (req, res) => {
-  const date = new Date();
-  const lastYear = new Date(date.setFullYear(date.getFullYear() - 1));
-
-  try {
-    const data = await User.aggregate([
-      { $match: { createdAt: { $gte: lastYear } } },
-      {
-        $project: {
-          month: { $month: "$createdAt" },
-        },
-      },
-      {
-        $group: {
-          _id: "$month",
-          total: { $sum: 1 },
-        },
-      },
-    ]);
-    res.status(200).json(data);
   } catch (err) {
     res.status(500).json(err);
   }
