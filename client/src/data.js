@@ -27,16 +27,19 @@ export const categories = [
     id: 1,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/517796267f874d2fbfd2ad490081a162_9366/X_SPEEDFLOW.1_FG_White_FY6869_01_standard.jpg",
     title: "FOOTBALL",
+    cate: "football",
   },
   {
     id: 2,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/919a1a887b69404fba99ad1301363313_9366/Giay_Alphabounce_trang_GY5401_01_standard.jpg",
     title: "RUNNING",
+    cate: "running",
   },
   {
     id: 3,
     img: "https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/6959c007b8dc4306a5b6ad0800c4f211_9366/GameCourt_Tennis_Shoes_White_GZ8514_01_standard.jpg",
     title: "TENNIS",
+    cate: "tennis",
   },
 ];
 
@@ -120,31 +123,31 @@ export const tennisShoes = [
   {
     id: 1,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
   {
     id: 2,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
   {
     id: 3,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
   {
     id: 4,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
   {
     id: 5,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
   {
     id: 6,
     img: "",
-    title: "FOOTBALL",
+    title: "TENNIS",
   },
 ];

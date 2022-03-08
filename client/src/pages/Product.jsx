@@ -1,10 +1,13 @@
 import { Remove, Add } from "@material-ui/icons";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Newsletter from "../components/Newsletter";
 import { mobile } from "../responsive";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div``;
 
@@ -115,48 +118,72 @@ const Button = styled.button`
 `;
 
 const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState(null);
+  const [size, setSize] = useState(null);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getProduct();
+  }, [id]);
+
+  const handleQuantity = (type) => {
+    type === "dec"
+      ? quantity > 0 && setQuantity(quantity - 1)
+      : setQuantity(quantity + 1);
+  };
+
+  const handleClick = () => {};
+
   return (
     <Container>
       <Navbar />
       <Announcement />
       <Wrapper>
         <ImgContainer>
-          <Image src="https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/60712c4ffd24452fbe87acee00dbf61a_9366/Giay_adidas_Ultraboost_DNA_x_LEGO(r)_Colors_trang_H67955_01_standard.jpg" />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title></Title>
-          <Desc>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta nam
-            veniam vero modi maxime. Perferendis ut ab nihil, fugit beatae
-            aspernatur omnis deserunt dignissimos qui ex? Sit, minus odio?
-            Officia!
-          </Desc>
-          <Price>$</Price>
+          <Title>{product.title}</Title>
+          <Desc>{product.desc}</Desc>
+          <Price>${product.price}</Price>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="black"></FilterColor>
-              <FilterColor color="orange"></FilterColor>
-              <FilterColor color="red"></FilterColor>
+              {product.color?.map((color) => (
+                <FilterColor
+                  color={color}
+                  key={color}
+                  onClick={() => setColor(color)}
+                />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>37</FilterSizeOption>
-                <FilterSizeOption>38</FilterSizeOption>
-                <FilterSizeOption>39</FilterSizeOption>
-                <FilterSizeOption>40</FilterSizeOption>
-                <FilterSizeOption>41</FilterSizeOption>
+              <FilterSize onClick={(e) => setSize(e.target.value)}>
+                {product.size?.map((size) => (
+                  <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <Remove />
+              <Remove onClick={() => handleQuantity("dec")} />
               <Amount>1</Amount>
-              <Add />
+              <Add onClick={() => handleQuantity("inc")} />
             </AmountContainer>
-            <Button>ADD TO CART</Button>
+            <Button onClick={handleClick}>ADD TO CART</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

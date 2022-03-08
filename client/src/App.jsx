@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Redirect,
+  Navigate,
 } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -22,10 +22,10 @@ const App = () => {
         <Route path="/products/:category" element={<ProductList />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={user ? <Redirect to="/" /> : <Login />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route
           path="/register"
-          element={user ? <Redirect to="/" /> : <Register />}
+          element={user ? <Navigate to="/" /> : <Register />}
         />
       </Routes>
     </Router>
