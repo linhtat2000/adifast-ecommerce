@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const dotenv = require("dotenv");
 
 const authRoute = require("./routes/auth");
@@ -19,6 +20,11 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use(express.json());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
