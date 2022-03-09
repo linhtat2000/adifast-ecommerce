@@ -2,11 +2,15 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
 
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
+import { useEffect, useState } from "react";
+import { userRequest } from "../requestMethods";
+import { useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -163,6 +167,28 @@ const Button = styled.button`
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: cart.total * 100,
+        });
+        navigate.push("/success", { data: res.data });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    stripeToken && cart.total > 1 && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <Container>
       <Navbar />
@@ -229,6 +255,16 @@ const Cart = () => {
               <SummaryItemText>Total</SummaryItemText>
               <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
             </SummaryItem>
+            <StripeCheckout
+              name="Adifast Shop"
+              image="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fthienminh_03%2Fmaki-zenin%2F&psig=AOvVaw3Va5tMO7-iT_0aZi0Dt6HJ&ust=1646921054266000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLjJ19WZufYCFQAAAAAdAAAAABAD"
+              billingAddress
+              shippingAddress
+              description={`Your total is ${cart.total}`}
+              amount={cart.total * 100}
+              token={onToken}
+              stripeKey={KEY}
+            />
             <Button>CHECKOUT NOW</Button>
           </Summary>
         </Bottom>
