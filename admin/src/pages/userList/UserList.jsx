@@ -1,9 +1,10 @@
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import "./userList.css";
 import { userRows } from "../../sampleData";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
+import "./userList.css";
 
 const UserList = () => {
   const [data, setData] = useState(userRows);
