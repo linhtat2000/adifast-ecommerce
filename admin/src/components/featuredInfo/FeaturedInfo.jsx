@@ -40,7 +40,7 @@ const FeaturedInfo = () => {
       <div className="featuredItem">
         <span className="featuredTitle">Sales</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">$20.74</span>
+          <span className="featuredMoney">${income[1]?.total}</span>
           <span className="featuredMoneyRate">
             -11.12 <ArrowDownward className="featuredIcon" />
           </span>
