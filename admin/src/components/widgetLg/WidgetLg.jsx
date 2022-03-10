@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
+import { userRequest } from "../../../../client/src/requestMethods";
+import { format } from "timeago.js";
+
 import "./widgetLg.css";
 
 const WidgetLg = () => {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    const getOrders = async () => {
+      try {
+        const res = await userRequest.get("orders");
+        setOrders(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getOrders();
+  }, []);
+
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
@@ -15,41 +33,19 @@ const WidgetLg = () => {
           <th className="widgetLgTh">Amount</th>
           <th className="widgetLgTh">Status</th>
         </tr>
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img src="" alt="user avatar" />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">20 Dec 2021</td>
-          <td className="widgetLgAmount">$200.50</td>
-          <td className="widgetLgStatus">
-            <Button type="Approved" />
-          </td>
-        </tr>
-
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img src="" alt="user avatar" />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">20 Dec 2021</td>
-          <td className="widgetLgAmount">$200.50</td>
-          <td className="widgetLgStatus">
-            <Button type="Declined" />
-          </td>
-        </tr>
-
-        <tr className="widgetLgTr">
-          <td className="widgetLgUser">
-            <img src="" alt="user avatar" />
-            <span className="widgetLgName">Susan Carol</span>
-          </td>
-          <td className="widgetLgDate">20 Dec 2021</td>
-          <td className="widgetLgAmount">$200.50</td>
-          <td className="widgetLgStatus">
-            <Button type="Pending" />
-          </td>
-        </tr>
+        {orders.map((order) => (
+          <tr className="widgetLgTr" key={order._id}>
+            <td className="widgetLgUser">
+              <img src="" alt="user avatar" />
+              <span className="widgetLgName">{order.userId}</span>
+            </td>
+            <td className="widgetLgDate">{format(order.createdAt)}</td>
+            <td className="widgetLgAmount">${order.amount}</td>
+            <td className="widgetLgStatus">
+              <Button type={order.status} />
+            </td>
+          </tr>
+        ))}
       </table>
     </div>
   );
