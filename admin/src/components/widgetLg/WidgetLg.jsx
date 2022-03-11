@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { userRequest } from "../../../../client/src/requestMethods";
+import { userRequest } from "../../requestMethods";
 import { format } from "timeago.js";
 
 import "./widgetLg.css";
@@ -39,7 +39,7 @@ const WidgetLg = () => {
               <img src="" alt="user avatar" />
               <span className="widgetLgName">{order.userId}</span>
             </td>
-            <td className="widgetLgDate">{format(order.createdAt)}</td>
+            <td className="widgetLgDate">{order.createdAt}</td>
             <td className="widgetLgAmount">${order.amount}</td>
             <td className="widgetLgStatus">
               <Button type={order.status} />

@@ -1,8 +1,7 @@
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
-import { productRows } from "../../sampleData";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import "./productList.css";
 import { getProducts, deleteProduct } from "../../redux/apiCalls";

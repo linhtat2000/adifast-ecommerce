@@ -3,9 +3,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import Chart from "../../components/chart/Chart";
-import { productData } from "../../sampleData";
+import { userRequest } from "../../requestMethods";
 import "./product.css";
-import { userRequest } from "../../../../client/src/requestMethods";
 
 const Product = () => {
   const location = useLocation();

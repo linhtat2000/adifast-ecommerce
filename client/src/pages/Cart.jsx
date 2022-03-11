@@ -2,7 +2,6 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
 
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";

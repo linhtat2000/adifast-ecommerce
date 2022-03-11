@@ -1,6 +1,6 @@
 import { Visibility } from "@material-ui/icons";
 import { useEffect, useState } from "react";
-import { userRequest } from "../../../../client/src/requestMethods";
+import { userRequest } from "../../requestMethods";
 
 import "./widgetSm.css";
 
